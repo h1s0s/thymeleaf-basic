@@ -27,7 +27,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/basic")
-public class BasicTwoController {
+public class BasicController {
 
     @GetMapping("/text-basic")
     public String textBasic(Model model) {
@@ -61,17 +61,17 @@ public class BasicTwoController {
         return "basic/variable";
     }
 
-//    /**
-//     * 세션에 담긴 값도 타임리프에서 꺼내어 사용할 수 있다
-//     * @param session
-//     * @return
-//     */
-//    @GetMapping("/basic-objects")
-//    public String basicObjects(HttpSession session) {
-//        session.setAttribute("sessionData", "Hello Session");
-//        return "basic/basic-objects";
-//    }
-//
+    /**
+     * 세션에 담긴 값도 타임리프에서 꺼내어 사용할 수 있다
+     * @param session
+     * @return
+     */
+    @GetMapping("/basic-objects")
+    public String basicObjects(HttpSession session) {
+        session.setAttribute("sessionData", "Hello Session");
+        return "basic/basic-objects";
+    }
+
 //    /**
 //     * 컴포넌트를 사용해 스프링 빈으로 등록한 값도, 타임리프에서 꺼내어 사용할 수 있다
 //     */
@@ -82,34 +82,34 @@ public class BasicTwoController {
 //        }
 //    }
 
-//    /**
-//     * 타임리프는 문자, 숫자, 날짜, URI등을 편리하게 다루는 다양한 유틸리티 객체들을 제공한다.
-//     * @param model
-//     * @return
-//     */
-//    @GetMapping("/date")
-//    public String date(Model model) {
-//        model.addAttribute("localDateTime", LocalDateTime.now());
-//        return "basic/date";
-//    }
-//
-//    /**
-//     * 타임리프에서 URL을 생성할 때
-//     * @param model
-//     * @return
-//     */
-//    @GetMapping("/link")
-//    public String link(Model model) {
-//        model.addAttribute("param1", "data1");
-//        model.addAttribute("param2", "data2");
-//        return "basic/link";
-//    }
-//
-//    @GetMapping("/literal")
-//    public String literal(Model model) {
-//        model.addAttribute("data", "Spring!");
-//        return "basic/literal";
-//    }
+    /**
+     * 타임리프는 문자, 숫자, 날짜, URI등을 편리하게 다루는 다양한 유틸리티 객체들을 제공한다.
+     * @param model
+     * @return
+     */
+    @GetMapping("/date")
+    public String date(Model model) {
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        return "basic/date";
+    }
+
+    /**
+     * 타임리프에서 URL을 생성할 때
+     * @param model
+     * @return
+     */
+    @GetMapping("/link")
+    public String link(Model model) {
+        model.addAttribute("param1", "data1");
+        model.addAttribute("param2", "data2");
+        return "basic/link";
+    }
+
+    @GetMapping("/literal")
+    public String literal(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/literal";
+    }
 
     @Data
     static class User {
