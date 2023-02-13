@@ -105,12 +105,22 @@ public class BasicController {
         return "basic/link";
     }
 
+    /**
+     * 리터럴
+     * @param model
+     * @return
+     */
     @GetMapping("/literal")
     public String literal(Model model) {
         model.addAttribute("data", "Spring!");
         return "basic/literal";
     }
 
+    /**
+     * 연산
+     * @param model
+     * @return
+     */
     @GetMapping("/operation")
     public String operation(Model model) {
         model.addAttribute("nullData", null);
@@ -118,9 +128,75 @@ public class BasicController {
         return "basic/operation";
     }
 
+    /**
+     * 속성
+     * @return
+     */
     @GetMapping("/attribute")
     public String attribute() {
         return "basic/attribute";
+    }
+
+    /**
+     * 반복문
+     * @param model
+     * @return
+     */
+    @GetMapping("/each")
+    public String each(Model model) {
+        addUsers(model);
+        return "basic/each";
+    }
+
+    private void addUsers(Model model) {
+        List<User> list = new ArrayList<>();
+        list.add(new User("userA", 10));
+        list.add(new User("userB", 20));
+        list.add(new User("userC", 30));
+        model.addAttribute("users", list);
+    }
+
+    /**
+     * 조건부 평가(CASE 문)
+     * @param model
+     * @return
+     */
+    @GetMapping("/condition")
+    public String condition(Model model) {
+        addUsers(model);
+        return "basic/condition";
+    }
+
+    /**
+     * 주석
+     */
+    @GetMapping("/comments")
+    public String comments(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/comments";
+    }
+
+    /**
+     * 블럭
+     * @param model
+     * @return
+     */
+    @GetMapping("/block")
+    public String block(Model model) {
+        addUsers(model);
+        return "basic/block";
+    }
+
+    /**
+     * 자바스크립트 인라인
+     * @param model
+     * @return
+     */
+    @GetMapping("/javascript")
+    public String javascript(Model model) {
+        model.addAttribute("user", new User("userA", 10));
+        addUsers(model);
+        return "basic/javascript";
     }
 
     @Data
